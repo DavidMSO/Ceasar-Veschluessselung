@@ -1,0 +1,26 @@
+public class Verschlüsselung{
+    private char caesarBuchstabe(char c,int key){
+        //Type casting: (double) 5.5f;
+        int verschlüsselt = (c + key);        
+        if(verschlüsselt>'Z'){
+            verschlüsselt -= 26;
+        }       
+        return (char) verschlüsselt;
+    }   
+    public String caesar(String text, int key){
+        if (key> 25){
+            return "Fehler! Key >25";
+        }
+        String output = ""; //leerer String
+        for (int i = 0; i < text.length(); i = i+1){
+            char c = text.charAt(i);
+            output = output + caesarBuchstabe(c, key);
+        }
+        return output;
+    }
+    public void testCaesar(){
+        System.out.println("B <-->" + caesar("A", 1));
+        System.out.println("Fehler! Key >25 <-->" +  caesar("A", 30));
+        System.out.println("Fehler! Key >25 <-->" +  caesar("A", 30));
+    }   
+}
